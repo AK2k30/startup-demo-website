@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { TypingText } from '../components';
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { TypingText } from "../components";
 
-import styles from '../styles';
-import { fadeIn, staggerContainer } from '../utils/motion';
+import styles from "../styles";
+import { fadeIn, staggerContainer } from "../utils/motion";
 
 const About = () => {
   const videoRef = useRef(null);
@@ -50,12 +50,12 @@ const About = () => {
 
         {/* Video Section with Curved Frame */}
         <motion.div
-          variants={fadeIn('up', 'tween', 0.3, 1)}
+          variants={fadeIn("up", "tween", 0.3, 1)}
           className="mt-[28px] video-frame"
           style={{
-            borderRadius: '20px',
-            overflow: 'hidden',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            borderRadius: "20px",
+            overflow: "hidden",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
           }}
         >
           <video
@@ -63,14 +63,14 @@ const About = () => {
             src="/giveway_demo.mp4"
             loop
             className="max-w-full h-auto"
-            style={{ display: 'block', width: '100%' }}
+            style={{ display: "block", width: "100%" }}
           >
             Your browser does not support the video tag.
           </video>
         </motion.div>
 
         <motion.img
-          variants={fadeIn('up', 'tween', 0.3, 1)}
+          variants={fadeIn("up", "tween", 0.3, 1)}
           src="/arrow-down.svg"
           alt="arrow down"
           className="w-[18px] h-[28px] object-contain mt-[28px]"
