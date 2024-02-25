@@ -1,11 +1,19 @@
-import { Footer, Navbar } from '../components';
-import { About, Explore, Feedback, GetStarted, Hero, Insights, WhatsNew } from '../sections';
+import { Footer, Navbar } from "../components";
+import {
+  About,
+  Explore,
+  Feedback,
+  GetStarted,
+  Hero,
+  Insights,
+  WhatsNew,
+} from "../sections";
 
 const Home = () => (
   <div className="bg-primary-black overflow-hidden">
     <Navbar />
     <Hero />
-    <div className="relative" style={{ marginTop: '100px' }}>
+    <div className="relative" style={{ marginTop: "100px" }}>
       <About />
       <div className="gradient-03 z-0" />
       <Explore />
