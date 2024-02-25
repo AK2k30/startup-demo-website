@@ -1,5 +1,5 @@
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/dist/react';
+import { SpeedInsights } from '@vercel/speed-insights/dist/next';
 import '../styles/globals.css';
 
 const RootLayout = ({ children }) => (
