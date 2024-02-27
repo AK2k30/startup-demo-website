@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.7",
+    "@next/third-parties": "^14.1.0",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "eslint-config-next": "13.0.3",
     "framer-motion": "^7.6.7",
-    "next": "^13.5.6",
+    "next": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1"
