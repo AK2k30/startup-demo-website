@@ -49,6 +49,16 @@ const Footer = () => {
             <p className="font-normal text-[14px] text-white opacity-50">
               Copyright © 2023 - 2024 Giveway. All rights reserved.
             </p>
+            <p className="font-normal text-[14px] text-white opacity-50">
+              <a href="https://www.termsfeed.com/live/d314d6e2-7405-47d6-8c46-922723d89912" target="_blank" rel="noopener noreferrer">
+                Privacy Policy
+              </a>
+            </p>
+            <p className="font-normal text-[14px] text-white opacity-50">
+              <a href="https://www.termsandconditionsgenerator.com/live.php?token=fddeMKdvQV57GX7nn99xjAfjHxZpx4bt" target="_blank" rel="noopener noreferrer">
+                Terms & Conditions
+              </a>
+            </p>
 
             <div className="flex gap-4">
               {socials.map((social) => (
