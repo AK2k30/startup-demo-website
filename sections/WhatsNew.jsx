@@ -36,6 +36,7 @@ const WhatsNew = () => (
         <img
           src="/whats-new.png"
           alt="get-started"
+          loading="lazy"
           className="w-[90%] h-[90%] object-contain"
         />
       </motion.div>

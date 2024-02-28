@@ -62,7 +62,8 @@ const About = () => {
             ref={videoRef}
             src="/giveway_demo.mp4"
             loop
-            className="max-w-full h-auto"
+            preload="auto"
+            className="w-full h-auto lg:w-[800px] lg:h-[450px] mx-auto"
             style={{ display: 'block', width: '100%' }}
           >
             Your browser does not support the video tag.
