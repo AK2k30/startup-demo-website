@@ -1,1 +1,0 @@
-init count = 0;
