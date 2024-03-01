@@ -31,6 +31,7 @@ const ThankYouPage = () => {
       <motion.div variants={textVariants}>
         <h1 className="text-4xl font-bold text-center">Thank You for Joining!</h1>
         <p className="text-xl text-center mt-4">We're excited to have you on board.</p>
+        <p className="text-xl text-center mt-4">We will send notification to you when our product will be ready.</p>
       </motion.div>
     </motion.div>
   );
