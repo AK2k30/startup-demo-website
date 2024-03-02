@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation'; // Correct the import for useRouter
+import { useRouter } from 'next/navigation'; // Ensure this is the correct import for your setup
 import styles from '../styles';
 import { navVariants } from '../utils/motion';
 
 const Navbar = () => {
   const [liked, setLiked] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -21,13 +20,15 @@ const Navbar = () => {
 
   const handleLike = () => {
     if (!liked) {
-      setShowForm(true); // Immediately show form on like click
+      setShowPopup(true);
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form submission from reloading the page
-    if (inputValue.trim() !== '') {
+  const handleFeedbackResponse = async (giveFeedback) => {
+    setShowPopup(false); // Close the popup regardless of the choice
+
+    if (giveFeedback) {
+      // If user clicks 'Yes', count the like and redirect
       try {
         const response = await fetch('https://like-count-backend-final-git-main-ak2k30.vercel.app/like', {
           method: 'POST',
@@ -35,47 +36,36 @@ const Navbar = () => {
         if (response.ok) {
           document.cookie = 'alreadyLiked=true; path=/; max-age=31536000';
           setLiked(true);
-          setShowForm(false); // Hide form after submission
-          router.push('/thankyou'); // Redirect to the like page
+          router.push('https://aka123.pythonanywhere.com/');
         }
       } catch (error) {
         console.error('Network error:', error);
       }
-    } else {
-      setShowForm(false); // Hide form if input is empty
     }
-  };
-
-  const handleCancel = () => {
-    setShowForm(false); // Hide form without counting like
+    // If user clicks 'No', do nothing further (like is not counted)
   };
 
   return (
     <>
-      {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm flex justify-center items-center z-50">
+      {showPopup && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="fixed inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm flex justify-center items-center z-50"
+        >
           <div className="bg-white p-5 rounded-lg shadow-lg">
-            <form onSubmit={handleSubmit} className="flex flex-col items-center space-y-4">
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                className="input bg-gray-100 p-2 rounded border border-gray-300 w-full"
-                placeholder="Please give your feedback here..."
-                required
-              />
-              <div className="flex space-x-2">
-                <button type="submit" className="bg-blue-500 text-white p-2 rounded">OK</button>
-                <button type="button" className="bg-red-500 text-white p-2 rounded" onClick={handleCancel}>Cancel</button>
-              </div>
-            </form>
+            <p className="text-center mb-4">Do you want to give feedback?</p>
+            <div className="flex justify-center space-x-4">
+              <button type="button" onClick={() => handleFeedbackResponse(true)} className="bg-blue-500 text-white p-2 rounded">Yes</button>
+              <button type="button" onClick={() => handleFeedbackResponse(false)} className="bg-gray-500 text-white p-2 rounded">No</button>
+            </div>
           </div>
-        </div>
+        </motion.div>
       )}
       <motion.nav
+        animate="visible"
         variants={navVariants}
-        initial="hidden"
-        whileInView="show"
         className={`${styles.xPaddings} py-8 relative`}
       >
         <div className="absolute w-[50%] inset-0 gradient-01" />
@@ -88,7 +78,7 @@ const Navbar = () => {
               onClick={handleLike}
             >
               <img src="/like.png" alt="Like" className="w-[24px] h-[24px] object-contain" />
-              <span className="font-normal text-[16px] text-white">Click to like idea</span>
+              <span className="font-normal text-[16px] text-white">Click to like idea!</span>
             </button>
           )}
         </div>
